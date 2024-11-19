@@ -3,15 +3,17 @@ import 'package:get/get.dart';
 import 'package:pas1_mobile_pplg1_24/controller/like_controller.dart';
 import 'package:pas1_mobile_pplg1_24/page/menu/team/TeamController.dart';
 import 'package:pas1_mobile_pplg1_24/page/menu/team/TeamModel.dart';
+import 'package:pas1_mobile_pplg1_24/widget/my_color.dart';
+import 'package:pas1_mobile_pplg1_24/widget/my_text.dart';
 
 
 class SoccerCard extends StatelessWidget {
   final TeamController teamController = Get.put(TeamController());
   final Likecontroller likeController = Get.put(Likecontroller());
-  final TeamModel post;
+  final TeamModel team;
   bool allowDeletion = false;
 
-  SoccerCard({required this.post, super.key, this.allowDeletion = false});
+  SoccerCard({required this.team, super.key, this.allowDeletion = false});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class SoccerCard extends StatelessWidget {
               bottomLeft: Radius.circular(20),
             ),
             child: Image.network(
-              post.strBadge,
+              team.strBadge,
               width: 100,
               height: 100,
               fit: BoxFit.cover,
@@ -41,52 +43,39 @@ class SoccerCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    post.strTeam,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.teal[800],
-                    ),
-                  ),
+                  MyText(text: team.strTeam, color: textColor, fontsize: 14, fontWeight: FontWeight.normal),
                   SizedBox(height: 8),
-                  Text(
-                    post.strLocation,
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.teal[600],
-                    ),
-                  ),
+                  MyText(text: team.strLocation, color: textColor, fontsize: 14, fontWeight: FontWeight.normal),
                   SizedBox(height: 10),
                   Align(
                     alignment: Alignment.centerRight,
                     child: Obx(() {
-                      var isLiked = likeController.getLikedById(post.idTeam!).value;
+                      var isLiked = likeController.getLikedById(team.idTeam!).value;
                       return IconButton(
                           onPressed: () {
                             if (isLiked) {
                               if (allowDeletion) {
-                                likeController.deleteTask(post.idTeam!);
+                                likeController.deleteTask(team.idTeam!);
                                 Get.snackbar(
-                                    'Info', '${post!.strTeam} removed from favorites.',
-                                    backgroundColor: Colors.teal,
+                                    'Info', '${team!.strTeam} removed from favorites.',
+                                    backgroundColor: Colors.white,
                                     colorText: Colors.black);
                               } else {
                                 Get.snackbar(
                                     'Error', 'You can only remove favorites from Library.',
-                                    backgroundColor: Colors.teal,
+                                    backgroundColor: Colors.white,
                                     colorText: Colors.black);
                               }
                             } else {
-                              likeController.addTask(post!);
+                              likeController.addTask(team!);
                               Get.snackbar(
-                                  'Info', '${post!.strTeam} added to favorites.',
-                                  backgroundColor: Colors.black87, colorText: Colors.black);
+                                  'Info', '${team!.strTeam} added to favorites.',
+                                  backgroundColor: Colors.white, colorText: Colors.black);
                             }
                           },
                           icon: Icon(
-                            isLiked ? Icons.shopping_cart : Icons.shopping_cart_outlined,
-                            color: isLiked ? Colors.teal : Colors.black,
+                            isLiked ? Icons.bookmark : Icons.bookmark_border,
+                            color: isLiked ? Colors.black : Colors.black,
                             size: 24,
                           ));
                     }),

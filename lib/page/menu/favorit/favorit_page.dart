@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-
 import '../../../controller/like_controller.dart';
 import '../../../widget/soccer_card.dart';
 
@@ -30,7 +28,7 @@ class FavoritePage extends StatelessWidget {
           itemBuilder: (context, index) {
             final dataSoccer = likecontroller.tasks[index];
             return SoccerCard(
-              post: dataSoccer,
+              team: dataSoccer,
               allowDeletion: true, // Pass the liked song data to MusicCard
             );
           },

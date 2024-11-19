@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pas1_mobile_pplg1_24/page/menu/team/TeamController.dart';
-
 import '../../../widget/soccer_card.dart';
 
 
@@ -21,7 +20,7 @@ class TeamView extends StatelessWidget {
         return ListView.builder(
           padding: EdgeInsets.all(10),
           itemCount: postController.teamList.length,
-          itemBuilder: (context, index) => SoccerCard(post: postController.teamList[index]),
+          itemBuilder: (context, index) => SoccerCard(team: postController.teamList[index]),
         );
       }),
     );

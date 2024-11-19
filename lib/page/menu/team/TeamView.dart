@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pas1_mobile_pplg1_24/page/menu/team/TeamController.dart';
-import '../../../widget/soccer_card.dart';
+import '../../../widget/my_soccer_card.dart';
 
 
 class TeamView extends StatelessWidget {

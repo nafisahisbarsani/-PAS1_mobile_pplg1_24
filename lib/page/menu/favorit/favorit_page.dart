@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../controller/like_controller.dart';
-import '../../../widget/soccer_card.dart';
+import '../../../widget/my_soccer_card.dart';
 
 class FavoritePage extends StatelessWidget {
   final Likecontroller likecontroller = Get.put(Likecontroller());

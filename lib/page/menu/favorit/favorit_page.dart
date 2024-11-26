@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../controller/like_controller.dart';
+import '../../../controller/favorit_controller.dart';
 import '../../../widget/my_soccer_card.dart';
 
-class FavoritePage extends StatelessWidget {
-  final Likecontroller likecontroller = Get.put(Likecontroller());
-  FavoritePage({super.key});
+class FavoritPage extends StatelessWidget {
+  final Favoritcontroller favoritcontroller = Get.put(Favoritcontroller());
+  FavoritPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    likecontroller.loadTasks();
+    favoritcontroller.loadTasks();
     return Scaffold(
       appBar: AppBar(
         title: Text('Favorit'),
       ),
       body: Obx(() {
-        if (likecontroller.tasks.isEmpty) {
+        if (favoritcontroller.tasks.isEmpty) {
           return Center(
             child: Text('Tidak ada Club yang disukai',
                 style: TextStyle(color: Colors.black)),
@@ -23,10 +23,10 @@ class FavoritePage extends StatelessWidget {
         }
         return ListView.builder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          itemCount: likecontroller.tasks.length,
+          physics: AlwaysScrollableScrollPhysics(),
+          itemCount: favoritcontroller.tasks.length,
           itemBuilder: (context, index) {
-            final dataSoccer = likecontroller.tasks[index];
+            final dataSoccer = favoritcontroller.tasks[index];
             return SoccerCard(
               team: dataSoccer,
               allowDeletion: true, // Pass the liked song data to MusicCard

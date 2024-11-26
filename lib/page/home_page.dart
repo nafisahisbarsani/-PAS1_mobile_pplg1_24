@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
     final BottomNavCtr bottomNavCtr = Get.find();
     final List<Widget> menus = [
       TeamView(),
-      FavoritePage(),
+      FavoritPage(),
       ProfilePage(),
     ];
     return Obx((){

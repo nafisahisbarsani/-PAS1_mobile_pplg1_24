@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final loginController = Get.put(LoginController());
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: loginController.isLoggedIn() ? '/' : '/login',
       getPages: [
         GetPage(
